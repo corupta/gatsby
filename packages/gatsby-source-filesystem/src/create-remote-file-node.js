@@ -151,7 +151,7 @@ const requestRemoteNode = (url, headers, tmpFilename, httpOpts, attempt = 1) =>
     }
     const responseStream = got.stream(url, {
       headers,
-      timeout: CONNECTION_TIMEOUT,
+      timeout: { socket: CONNECTION_TIMEOUT, connect: CONNECTION_TIMEOUT },
       retries: CONNECTION_RETRY_LIMIT,
       ...httpOpts,
     })
